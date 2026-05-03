@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>To-Do App</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      font-family: Arial;
+      background: #0f172a;
+      color: white;
+      text-align: center;
+      margin-top: 50px;
+    }
+
+    h1 {
+      color: #38bdf8;
+    }
+
+    input {
+      padding: 10px;
+      width: 200px;
+      border-radius: 5px;
+      border: none;
+    }
+
+    button {
+      padding: 10px;
+      background: #38bdf8;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-left: 5px;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin-top: 20px;
+    }
+
+    li {
+      background: #1e293b;
+      margin: 10px auto;
+      padding: 10px;
+      width: 250px;
+      border-radius: 5px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .delete {
+      background: red;
+      color: white;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+
+<h1>To-Do App</h1>
+
+<input type="text" id="taskInput" placeholder="Enter task">
+<button onclick="addTask()">Add</button>
+
+<ul id="taskList"></ul>
+
+<script>
+function addTask() {
+  let input = document.getElementById("taskInput");
+  let task = input.value;
+
+  if (task === "") return;
+
+  let li = document.createElement("li");
+  li.innerHTML = task + ' <button class="delete" onclick="removeTask(this)">X</button>';
+
+  document.getElementById("taskList").appendChild(li);
+  input.value = "";
+}
+
+function removeTask(btn) {
+  btn.parentElement.remove();
+}
+</script>
+
+</body>
+</html>
